@@ -40,6 +40,7 @@ dependencies:
   webview_flutter: ^4.4.4
   shared_preferences: ^2.2.2
   http: ^1.2.0
+  responsive_sizer: ^3.3.0+1
 
 dev_dependencies:
   flutter_test:

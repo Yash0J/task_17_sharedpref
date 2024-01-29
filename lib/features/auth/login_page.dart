@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously, avoid_print
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -17,27 +15,32 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String? validateUsername(username) {
+  String? validateUsername(String? username) {
     if (username == null || username.isEmpty) {
       return 'Username is required';
+    } else if (!RegExp(r'^[a-zA-Z0-9._-]{2,10}$').hasMatch(username)) {
+      return 'Invalid username format';
     }
 
     return null; // Username is valid
   }
 
-  String? validateEmail(email) {
+  String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
       return 'Email is required';
-    } else if (!RegExp(r'^[^@]+@[^.]+\..+$').hasMatch(email)) {
+    } else if (!RegExp(r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
+        .hasMatch(email)) {
       return 'Invalid email format';
     }
 
     return null; // Email is valid
   }
 
-  String? validatePassword(password) {
+  String? validatePassword(String? password) {
     if (password == null || password.isEmpty) {
       return 'Password is required';
+    } else if (!RegExp(r'^[a-zA-Z0-9!@#$%^&*]{6,16}$').hasMatch(password)) {
+      return 'Invalid password format';
     }
 
     return null; // Password is valid

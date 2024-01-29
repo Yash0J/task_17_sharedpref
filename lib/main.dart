@@ -6,7 +6,7 @@ import 'utils/constants/colors.dart';
 import 'features/auth/login_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized;
+  WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   var email = sharedPreferences.getString("email");
   print(email);
